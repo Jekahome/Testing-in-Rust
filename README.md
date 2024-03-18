@@ -22,7 +22,7 @@
 
 Важно: `cargo-nextest` это полная замена `cargo test`
 
-```
+```bash
 $ cargo install cargo-nextest --locked
 $ cargo nextest run
 ```
@@ -205,7 +205,7 @@ crate fake генерирует поддельные данные, такие к
 
 ## Как тестировать stdout вывод
 
-```
+```rust
 // Этот вариант не сможем протестировать, нет доступа к выводу
 fn find_matches(content: &str, pattern: &str) {
     for line in content.lines() {
@@ -241,7 +241,7 @@ fn main() -> Result<()> {
 
 ## Как тестировать ожидая аргументы командной строки
 
-```
+```rust
 [dev-dependencies]
 assert_cmd = "2.0.11"
 predicates = "3.0.3"
@@ -265,7 +265,7 @@ fn file_doesnt_exist() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Как тестировать работу с файлами
 
-```
+```rust
 [dev-dependencies]
 assert_fs = "1.0.13"
 
@@ -290,7 +290,7 @@ fn find_content_in_file() -> Result<(), Box<dyn std::error::Error>> {
 
 crate ditto_time
 
-```
+```rust
 [dependencies]
 actix-rt = "*"
 
