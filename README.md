@@ -1,7 +1,21 @@
 
 # Testing
 
-
+* [Tools cargo-nextest](https://github.com/Jekahome/Testing-in-Rust#tools-cargo-nextest)
+* [Проблемы тестирования](https://github.com/Jekahome/Testing-in-Rust#проблемы-тестирования)
+* [Негласные правила](https://github.com/Jekahome/Testing-in-Rust#негласные-правила)
+* [Unit tests](https://github.com/Jekahome/Testing-in-Rust#unit-tests)
+* [Integration tests](https://github.com/Jekahome/Testing-in-Rust#integration-tests)
+* [End-to-end (сквозное тестирование)](https://github.com/Jekahome/Testing-in-Rust#end-to-end-сквозное-тестирование)
+* [Mocking (crate mockall)](https://github.com/Jekahome/Testing-in-Rust#mocking-crate-mockall)
+* [Fuzz testing](https://github.com/Jekahome/Testing-in-Rust#fuzz-testing)
+* [Property based testing](https://github.com/Jekahome/Testing-in-Rust#property-based-testing)
+* [Generating fake data](https://github.com/Jekahome/Testing-in-Rust#generating-fake-data)
+* [Как тестировать stdout вывод](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-stdout-вывод)
+* [Как тестировать ожидая аргументы командной строки](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-ожидая-аргументы-командной-строки)
+* [Как тестировать работу с файлами](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-работу-с-файлами)
+* [Как тестировать async function](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-async-function)
+ 
 ## Tools cargo-nextest 
 
 Предлагает более чистый интерфейс результатов теста, а также работает быстрее.
