@@ -1,7 +1,7 @@
 
 # Testing
 
-* [Советы по тестированию](https://github.com/Jekahome/Testing-in-Rust#)
+* [Советы по тестированию](https://github.com/Jekahome/Testing-in-Rust#советы-по-тестированию)
 * [Tools cargo-nextest](https://github.com/Jekahome/Testing-in-Rust#tools-cargo-nextest)
 * [Проблемы тестирования](https://github.com/Jekahome/Testing-in-Rust#проблемы-тестирования)
 * [Негласные правила](https://github.com/Jekahome/Testing-in-Rust#негласные-правила)
