@@ -1,6 +1,7 @@
 
 # Testing
 
+* [Советы по тестированию](https://github.com/Jekahome/Testing-in-Rust#)
 * [Tools cargo-nextest](https://github.com/Jekahome/Testing-in-Rust#tools-cargo-nextest)
 * [Проблемы тестирования](https://github.com/Jekahome/Testing-in-Rust#проблемы-тестирования)
 * [Негласные правила](https://github.com/Jekahome/Testing-in-Rust#негласные-правила)
@@ -17,6 +18,13 @@
 * [Как тестировать работу с файлами](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-работу-с-файлами)
 * [Как тестировать async function](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-async-function)
 * [Как успеть очистить env среду разработки после panic в тесте] (https://github.com/Jekahome/Testing-in-Rust#как-успеть-очистить-env-среду-разработки-после-panic-в-тесте)
+
+## Советы по тестированию
+
+- Запускайте все тесты в CI при каждом изменении (за исключением Fuzzy Testing).
+- Когда вы исправляете ошибку, напишите тест, который выявляет ошибку, прежде чем ее исправлять. Таким образом, вы можете быть уверены, что ошибка исправлена ​​и не возникнет случайно в будущем.
+- Если ваш ящик имеет features, проведите испытания для всех возможных комбинаций доступных features.
+- В более общем случае, если ваш контейнер включает какой-либо специфичный для конфигурации код (например, #[cfg(target_os = "windows")]), запустите тесты для каждой платформы , на которой есть отдельный код.
 
 ## Tools cargo-nextest 
 
