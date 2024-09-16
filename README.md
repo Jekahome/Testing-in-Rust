@@ -239,8 +239,9 @@ honggfuzz - это фаззер, ориентированный на безоп�
 
 [how-to-organize-rust-tests](https://blog.logrocket.com/how-to-organize-rust-tests/)
 
-![fuzzy resources](/fuzz-target/fuzzy-resources.png "This is a sample image.")
+[Effective Rust: Fuzz Testing](https://www.lurklurk.org/effective-rust/testing.html#fuzz-testing)
 
+![fuzzy resources](/fuzz-target/fuzzy-resources.png "This is a sample image.")
 
 ## Property based testing
 
