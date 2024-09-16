@@ -16,7 +16,8 @@
 * [Как тестировать ожидая аргументы командной строки](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-ожидая-аргументы-командной-строки)
 * [Как тестировать работу с файлами](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-работу-с-файлами)
 * [Как тестировать async function](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-async-function)
- 
+* [Как успеть очистить env среду разработки после panic в тесте] (https://github.com/Jekahome/Testing-in-Rust#)
+
 ## Tools cargo-nextest 
 
 Предлагает более чистый интерфейс результатов теста, а также работает быстрее.
@@ -418,3 +419,31 @@ mod tests {
 ```
 
 [Actix Web TestRequest](https://actix.rs/docs/testing/)
+
+## Как успеть очистить env среду разработки после panic в тесте
+
+```rust
+#[tokio::test]
+async fn setup_create_account() {
+    // setup env ...
+  
+    // run test
+    let join_handle = tokio::spawn(async {
+        test_unified().await?;
+        Ok::<(), io::Error>(())
+    });
+
+    let err = match join_handle.await {
+        Ok(Err(e)) => Some(Box::new(e)),
+        Err(e) => Some(Box::new(e.into())),
+        Ok(Ok(_)) => None,
+    };
+
+    // clear env ...
+
+    if let Some(err) = err {
+        println!("Test failed, rethrowing panic...");
+        panic::resume_unwind(err);
+    }
+}
+```
