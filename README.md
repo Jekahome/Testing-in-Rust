@@ -4,6 +4,7 @@
 * [Tools cargo-nextest](https://github.com/Jekahome/Testing-in-Rust#tools-cargo-nextest)
 * [Проблемы тестирования](https://github.com/Jekahome/Testing-in-Rust#проблемы-тестирования)
 * [Негласные правила](https://github.com/Jekahome/Testing-in-Rust#негласные-правила)
+* [Рекомендация по архитектуре тестов](https://github.com/Jekahome/Testing-in-Rust#рекомендация-по-архитектуре-тестов)
 * [Unit tests](https://github.com/Jekahome/Testing-in-Rust#unit-tests)
 * [Integration tests](https://github.com/Jekahome/Testing-in-Rust#integration-tests)
 * [End-to-end (сквозное тестирование)](https://github.com/Jekahome/Testing-in-Rust#end-to-end-сквозное-тестирование)
@@ -64,6 +65,78 @@ p.s. надо сразу учитывать как протестировать 
  - В общем, вы всегда должны стремиться тестировать поведение , а не функции, классы или модули. Это помогает исключить детали реализации из вашего теста и уменьшает зависимости.
 
 ![Pyramid](/Pyramid.png "This is a sample image.")
+
+## [Рекомендация по архитектуре тестов](https://matklad.github.io/2021/02/27/delete-cargo-integration-tests.html#Delete-Cargo-Integration-Tests)
+
+p.s. терминология unit/integration основана исключительно на расположении функций #[test], а не на том, что эти функции на самом деле делают.
+
+- рекомендация, больших проектах только один интеграционный тестовый ящик с несколькими модулями,
+  чтобы недопустить увеличения времени компиляции тестов;
+
+``` 
+не делайте этого: ❌
+tests/
+  foo.rs
+  bar.rs
+```
+
+```
+Вместо этого сделайте это: ✅ 
+tests/
+  integration/
+    mod.rs
+    foo.rs
+    bar.rs
+```
+
+- для библиотеки с публичным API, одиночные интеграционные тесты;
+
+```
+Для не больших crates:  ✅ 
+tests/
+  it.rs
+```
+
+```
+Или для больших crates: ✅ 
+tests/
+  it/
+    main.rs
+    foo.rs
+    bar.rs
+```    
+
+- для внутренней библиотеки, избегать интеграционных тестов. Вместо этого использовать модульные тесты;
+
+```
+src/
+  lib.rs
+  tests.rs
+  tests/
+     mod.rs
+     integration_tests/
+        foo.rs
+        mod.rs
+        bar.rs
+     
+где: 
+lib.rs
+  #[cfg(test)]
+  mod tests;
+
+mod.rs:
+  #[cfg(test)]
+  mod integration_tests;
+
+integration_tests/mod.rs:
+  #[cfg(test)]
+  mod foo;
+  #[cfg(test)]
+  mod bar;
+
+Запуск:
+cargo run tests integration_tests
+```
 
 
 ## Unit tests
