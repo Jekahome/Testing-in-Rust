@@ -16,7 +16,7 @@
 * [Как тестировать ожидая аргументы командной строки](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-ожидая-аргументы-командной-строки)
 * [Как тестировать работу с файлами](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-работу-с-файлами)
 * [Как тестировать async function](https://github.com/Jekahome/Testing-in-Rust#как-тестировать-async-function)
-* [Как успеть очистить env среду разработки после panic в тесте] (https://github.com/Jekahome/Testing-in-Rust#)
+* [Как успеть очистить env среду разработки после panic в тесте] (https://github.com/Jekahome/Testing-in-Rust#как-успеть-очистить-env-среду-разработки-после-panic-в-тесте)
 
 ## Tools cargo-nextest 
 
